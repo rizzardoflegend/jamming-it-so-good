@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuxpw7xnqrd55"]
+
+[ext_resource type="Script" uid="uid://dtc3joh2ppgdr" path="res://script/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://cygoyatjilwb1" path="res://icon.svg" id="2_4dohe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r66lb"]
+size = Vector2(121, 124)
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_r66lb")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("2_4dohe")
+
+[node name="dash_cooldown" type="Timer" parent="."]
