@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuxpw7xnqrd55"]
+[gd_scene load_steps=9 format=3 uid="uid://cuxpw7xnqrd55"]
 
 [ext_resource type="Script" uid="uid://dtc3joh2ppgdr" path="res://script/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://cygoyatjilwb1" path="res://icon.svg" id="2_4dohe"]
+[ext_resource type="Script" uid="uid://dc4ejtgrf5xvx" path="res://prefabs/player_controllable_state.gd" id="3_r66lb"]
+[ext_resource type="Script" uid="uid://bn5q8epqc66ra" path="res://resources+classes/hitbox.gd" id="4_1txc5"]
+[ext_resource type="Script" uid="uid://dmhni2g5nm211" path="res://prefabs/stun.gd" id="4_g2jcq"]
+[ext_resource type="Script" uid="uid://cknulilw5wq82" path="res://prefabs/dialogue.gd" id="5_u51tk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r66lb"]
 size = Vector2(121, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2jcq"]
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_3vyb7")
@@ -16,4 +22,24 @@ shape = SubResource("RectangleShape2D_r66lb")
 [node name="Icon" type="Sprite2D" parent="."]
 texture = ExtResource("2_4dohe")
 
-[node name="dash_cooldown" type="Timer" parent="."]
+[node name="state_machine" type="Node" parent="."]
+
+[node name="controllable" type="Node" parent="state_machine"]
+script = ExtResource("3_r66lb")
+
+[node name="stun" type="Node" parent="state_machine"]
+script = ExtResource("4_g2jcq")
+
+[node name="dialogue" type="Node" parent="state_machine"]
+script = ExtResource("5_u51tk")
+
+[node name="weapon" type="Node" parent="."]
+
+[node name="hitbox" type="Area2D" parent="weapon"]
+script = ExtResource("4_1txc5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="weapon/hitbox"]
+position = Vector2(117, -6)
+shape = SubResource("RectangleShape2D_g2jcq")
+
+[connection signal="area_entered" from="weapon/hitbox" to="weapon/hitbox" method="_on_area_entered"]
