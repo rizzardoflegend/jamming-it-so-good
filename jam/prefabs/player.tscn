@@ -3,15 +3,14 @@
 [ext_resource type="Script" uid="uid://dtc3joh2ppgdr" path="res://script/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://cygoyatjilwb1" path="res://icon.svg" id="2_4dohe"]
 [ext_resource type="Script" uid="uid://dc4ejtgrf5xvx" path="res://prefabs/player_controllable_state.gd" id="3_r66lb"]
-[ext_resource type="Script" uid="uid://bn5q8epqc66ra" path="res://resources+classes/hitbox.gd" id="4_1txc5"]
 [ext_resource type="Script" uid="uid://dmhni2g5nm211" path="res://prefabs/stun.gd" id="4_g2jcq"]
 [ext_resource type="Script" uid="uid://cknulilw5wq82" path="res://prefabs/dialogue.gd" id="5_u51tk"]
+[ext_resource type="Script" uid="uid://bddfdmt147cbj" path="res://prefabs/weapon_manager.gd" id="6_kbsxf"]
 [ext_resource type="Script" uid="uid://djwxd4lq8xgyd" path="res://resources+classes/hurtbox.gd" id="7_u51tk"]
+[ext_resource type="Script" uid="uid://r4b3ej5td8ca" path="res://resources+classes/weapon resource/cutlass.gd" id="8_kbsxf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r66lb"]
 size = Vector2(121, 124)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2jcq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbsxf"]
 size = Vector2(124, 128)
@@ -26,6 +25,15 @@ shape = SubResource("RectangleShape2D_r66lb")
 [node name="Icon" type="Sprite2D" parent="."]
 texture = ExtResource("2_4dohe")
 
+[node name="hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("daddy")]
+script = ExtResource("7_u51tk")
+daddy = NodePath("..")
+metadata/_custom_type_script = "uid://djwxd4lq8xgyd"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_kbsxf")
+
 [node name="state_machine" type="Node" parent="."]
 
 [node name="controllable" type="Node" parent="state_machine"]
@@ -37,22 +45,8 @@ script = ExtResource("4_g2jcq")
 [node name="dialogue" type="Node" parent="state_machine"]
 script = ExtResource("5_u51tk")
 
-[node name="weapon" type="Node" parent="."]
+[node name="weapon_manager" type="Node" parent="."]
+script = ExtResource("6_kbsxf")
 
-[node name="hitbox" type="Area2D" parent="weapon"]
-script = ExtResource("4_1txc5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="weapon/hitbox"]
-position = Vector2(117, -6)
-shape = SubResource("RectangleShape2D_g2jcq")
-
-[node name="hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("daddy")]
-script = ExtResource("7_u51tk")
-daddy = NodePath("..")
-metadata/_custom_type_script = "uid://djwxd4lq8xgyd"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
-position = Vector2(1, 0)
-shape = SubResource("RectangleShape2D_kbsxf")
-
-[connection signal="area_entered" from="weapon/hitbox" to="weapon/hitbox" method="_on_area_entered"]
+[node name="cutlass" type="Node" parent="weapon_manager"]
+script = ExtResource("8_kbsxf")
