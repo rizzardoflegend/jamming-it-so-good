@@ -1,7 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsb8jj4adqp85"]
+[gd_scene load_steps=4 format=3 uid="uid://dsb8jj4adqp85"]
 
 [ext_resource type="PackedScene" uid="uid://cuxpw7xnqrd55" path="res://prefabs/player.tscn" id="1_mqs0c"]
+[ext_resource type="Script" uid="uid://dfoxqsjebrkpe" path="res://scenes/enemy(test_ill_fix_shit_up_soon).gd" id="2_f8rqs"]
+[ext_resource type="Texture2D" uid="uid://cygoyatjilwb1" path="res://icon.svg" id="3_h28tc"]
 
 [node name="one piece" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_mqs0c")]
+
+[node name="enemy(test ill fix shit up soon)" type="CharacterBody2D" parent="."]
+script = ExtResource("2_f8rqs")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemy(test ill fix shit up soon)"]
+position = Vector2(301, -3)
+texture = ExtResource("3_h28tc")
