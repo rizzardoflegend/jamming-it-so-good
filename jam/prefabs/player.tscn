@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cuxpw7xnqrd55"]
+[gd_scene load_steps=14 format=3 uid="uid://cuxpw7xnqrd55"]
 
 [ext_resource type="Script" uid="uid://dtc3joh2ppgdr" path="res://script/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://cygoyatjilwb1" path="res://icon.svg" id="2_4dohe"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bddfdmt147cbj" path="res://prefabs/weapon_manager.gd" id="6_kbsxf"]
 [ext_resource type="Script" uid="uid://djwxd4lq8xgyd" path="res://resources+classes/hurtbox.gd" id="7_u51tk"]
 [ext_resource type="Script" uid="uid://r4b3ej5td8ca" path="res://resources+classes/weapon resource/cutlass.gd" id="8_kbsxf"]
+[ext_resource type="Resource" uid="uid://dp5ghgngh4xva" path="res://resources+classes/weapon resource/weapon_display/cutlass_display.tres" id="9_opo22"]
 [ext_resource type="Script" uid="uid://bn5q8epqc66ra" path="res://resources+classes/hitbox.gd" id="9_rgeog"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r66lb"]
@@ -54,6 +55,7 @@ script = ExtResource("6_kbsxf")
 
 [node name="cutlass" type="Node2D" parent="weapon_manager"]
 script = ExtResource("8_kbsxf")
+weapon_info = ExtResource("9_opo22")
 weapon_id = 1
 
 [node name="hitbox" type="Area2D" parent="weapon_manager/cutlass"]

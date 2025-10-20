@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c16qpsbd881pv"]
+
+[ext_resource type="Script" uid="uid://qfo4iogeyf34" path="res://prefabs/item_base.gd" id="1_g1obt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aosm2"]
+
+[node name="ItemBase" type="CharacterBody2D"]
+script = ExtResource("1_g1obt")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_aosm2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aosm2")

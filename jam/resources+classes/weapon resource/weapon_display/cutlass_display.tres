@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="weapon_display" load_steps=2 format=3 uid="uid://dp5ghgngh4xva"]
+
+[ext_resource type="Script" uid="uid://brhra7a0o3tpu" path="res://resources+classes/weapon resource/weapon_display.gd" id="1_oius8"]
+
+[resource]
+script = ExtResource("1_oius8")
+weapon_name = "cutlass"
+weapon_damage = 10
+weapon_id = 1
+metadata/_custom_type_script = "uid://brhra7a0o3tpu"
