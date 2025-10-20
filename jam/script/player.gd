@@ -12,6 +12,7 @@ var can_dash = true
 
 func _ready() -> void:
 	$state_machine/controllable.enter()
+	#$weapon_manager.switch_weapon(1)
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()

@@ -8,9 +8,10 @@ var player_cur_health_max: int
 var player_cur_health: int
 var player_dash_speed = 3000
 var dash_cooldown := 0.1
-
+var mouse_position: Vector2
 #weapons
-
+func _physics_process(delta: float) -> void:
+	mouse_position 
 func reset_stats():
 	player_speed = player_max_speed
 	player_dash_speed = player_max_dash_speed

@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var wander_radius: float = 200.0
 @export var chase_distance: float = 250.0
 
-var player: CharacterBody2D
+@export var player: CharacterBody2D
 var target_pos: Vector2
 var wander_timer: float = 0.0
 

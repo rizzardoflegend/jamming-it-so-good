@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cuxpw7xnqrd55"]
+[gd_scene load_steps=13 format=3 uid="uid://cuxpw7xnqrd55"]
 
 [ext_resource type="Script" uid="uid://dtc3joh2ppgdr" path="res://script/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://cygoyatjilwb1" path="res://icon.svg" id="2_4dohe"]
@@ -8,12 +8,16 @@
 [ext_resource type="Script" uid="uid://bddfdmt147cbj" path="res://prefabs/weapon_manager.gd" id="6_kbsxf"]
 [ext_resource type="Script" uid="uid://djwxd4lq8xgyd" path="res://resources+classes/hurtbox.gd" id="7_u51tk"]
 [ext_resource type="Script" uid="uid://r4b3ej5td8ca" path="res://resources+classes/weapon resource/cutlass.gd" id="8_kbsxf"]
+[ext_resource type="Script" uid="uid://bn5q8epqc66ra" path="res://resources+classes/hitbox.gd" id="9_rgeog"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r66lb"]
 size = Vector2(121, 124)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbsxf"]
 size = Vector2(124, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opo22"]
+size = Vector2(123, 94)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_3vyb7")
@@ -45,8 +49,17 @@ script = ExtResource("4_g2jcq")
 [node name="dialogue" type="Node" parent="state_machine"]
 script = ExtResource("5_u51tk")
 
-[node name="weapon_manager" type="Node" parent="."]
+[node name="weapon_manager" type="Node2D" parent="."]
 script = ExtResource("6_kbsxf")
 
-[node name="cutlass" type="Node" parent="weapon_manager"]
+[node name="cutlass" type="Node2D" parent="weapon_manager"]
 script = ExtResource("8_kbsxf")
+weapon_id = 1
+
+[node name="hitbox" type="Area2D" parent="weapon_manager/cutlass"]
+script = ExtResource("9_rgeog")
+metadata/_custom_type_script = "uid://bn5q8epqc66ra"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="weapon_manager/cutlass/hitbox"]
+position = Vector2(132, 0)
+shape = SubResource("RectangleShape2D_opo22")
