@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsb8jj4adqp85"]
+[gd_scene load_steps=7 format=3 uid="uid://dsb8jj4adqp85"]
 
 [ext_resource type="PackedScene" uid="uid://cuxpw7xnqrd55" path="res://prefabs/player.tscn" id="1_mqs0c"]
 [ext_resource type="Script" uid="uid://dfoxqsjebrkpe" path="res://scenes/enemy(test_ill_fix_shit_up_soon).gd" id="2_f8rqs"]
 [ext_resource type="Texture2D" uid="uid://cygoyatjilwb1" path="res://icon.svg" id="3_h28tc"]
+[ext_resource type="PackedScene" uid="uid://c16qpsbd881pv" path="res://prefabs/weapon_item.tscn" id="4_hxvrm"]
+[ext_resource type="Resource" uid="uid://dpol2seqcroxb" path="res://resources+classes/weapon resource/weapon_display/dagger_display.tres" id="5_yokfm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h28tc"]
 size = Vector2(116, 126)
@@ -12,6 +14,7 @@ size = Vector2(116, 126)
 [node name="player" parent="." instance=ExtResource("1_mqs0c")]
 
 [node name="enemy(test ill fix shit up soon)" type="CharacterBody2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(686, -271)
 script = ExtResource("2_f8rqs")
 player = NodePath("../player")
 
@@ -22,3 +25,7 @@ texture = ExtResource("3_h28tc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy(test ill fix shit up soon)"]
 position = Vector2(302, -2)
 shape = SubResource("RectangleShape2D_h28tc")
+
+[node name="weapon_base" parent="." instance=ExtResource("4_hxvrm")]
+position = Vector2(481, 146)
+item = ExtResource("5_yokfm")

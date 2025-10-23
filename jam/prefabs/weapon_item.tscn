@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c16qpsbd881pv"]
+[gd_scene load_steps=4 format=3 uid="uid://c16qpsbd881pv"]
 
 [ext_resource type="Script" uid="uid://qfo4iogeyf34" path="res://prefabs/item_base.gd" id="1_g1obt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aosm2"]
+radius = 25.1794
 
-[node name="ItemBase" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_31xul"]
+
+[node name="weapon_base" type="CharacterBody2D"]
 script = ExtResource("1_g1obt")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -15,4 +18,6 @@ shape = SubResource("CircleShape2D_aosm2")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_aosm2")
+shape = SubResource("CircleShape2D_31xul")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

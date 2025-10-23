@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="weapon_display" load_steps=2 format=3 uid="uid://dpol2seqcroxb"]
+
+[ext_resource type="Script" uid="uid://brhra7a0o3tpu" path="res://resources+classes/weapon resource/weapon_display.gd" id="1_qi7n1"]
+
+[resource]
+script = ExtResource("1_qi7n1")
+weapon_name = "dagger"
+weapon_damage = 0
+weapon_id = 2
+metadata/_custom_type_script = "uid://brhra7a0o3tpu"

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name player
 @export var speed: float = 300.0
 @export var dash_speed: float = 900.0
 @export var dash_duration: float = 0.15
@@ -20,4 +20,7 @@ func _physics_process(delta: float) -> void:
 func take_damage(damage_object: damage_class):
 	if PlayerInfo.player_cur_health > 0:
 		PlayerInfo.player_cur_health -= damage_object.damage
-		
+		$state_machine/controllable.exit()
+		$state_machine/stun.enterstun(damage_object.stun_duration)
+func switch_weapon(weapon_id: int):
+	$weapon_manager.switch_weapon(weapon_id)

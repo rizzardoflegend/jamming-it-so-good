@@ -5,13 +5,15 @@ class_name weapon_manager
 func _process(delta: float) -> void:
 	if current_weapon:
 		current_weapon.active = true
-func attack():
-	pass
 
 func upgrade():
 	pass
 
 func switch_weapon(weapon_id: int):
-	for i in get_children():
-		if i.weapon_id == weapon_id:
-			current_weapon = i
+	
+	if weapon_id == 1:
+		current_weapon.active = false
+		current_weapon = $cutlass
+	if weapon_id == 2:
+		current_weapon.active = false
+		current_weapon = $dagger

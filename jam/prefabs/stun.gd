@@ -6,4 +6,5 @@ func enterstun(stun_duration: float):
 	exit()
 func exit():
 	#animations here
-	pass
+	$"../controllable".enter()
+	
